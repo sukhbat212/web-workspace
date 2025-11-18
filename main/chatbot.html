@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Чатбот - ThunderShop</title>
+    <style>
+      /* Ерөнхий стиль */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(135deg, #2e2e4e, #4c2b8a);
+        padding: 10px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo {
+        width: 70px;
+        height: 45px;
+        background: #fff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #2e2e4e;
+        margin-right: 10px;
+      }
+
+      .logo-text {
+        font-size: 24px;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .search-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        max-width: 600px;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 12px 18px;
+        border-radius: 25px;
+        border: 2px solid transparent;
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+
+      .search-input:focus {
+        border-color: #6a1bb8;
+        box-shadow: 0 0 5px rgba(106, 27, 184, 0.3);
+        outline: none;
+      }
+
+      .search-btn {
+        background: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .search-btn:hover {
+        background: #6a1bb8;
+        color: #fff;
+      }
+
+      .nav {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .profile-icon {
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        color: #2e2e4e;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .profile-icon:hover {
+        background: #6a1bb8;
+        color: #fff;
+      }
+
+      /* Footer */
+      .footer {
+        background: #2e2e4e;
+        padding: 30px 0;
+        margin-top: 30px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+      }
+
+      .footer-section {
+        flex: 1;
+      }
+
+      .footer-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #fff;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-link {
+        color: #d4dceb;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-link:hover {
+        color: #fff;
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #d4dceb;
+        font-size: 14px;
+      }
+
+      /* Layout */
+      .main {
+        display: flex;
+        flex: 1;
+        margin: 20px 0;
+        gap: 20px;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 220px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        height: fit-content;
+      }
+
+      .sidebar-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #2e2e4e;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+      }
+
+      .sidebar-menu {
+        list-style: none;
+        padding-top: 10px;
+      }
+
+      .sidebar-link {
+        display: block;
+        padding: 10px;
+        border-radius: 6px;
+        color: #555;
+        transition: 0.3s;
+      }
+
+      .sidebar-link:hover,
+      .sidebar-link.active {
+        background: #f0e8ff;
+        color: #2e2e4e;
+        font-weight: 500;
+      }
+
+      /* Chatbot */
+      .chatbot-container {
+        flex: 1;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .chatbot-header {
+        background: linear-gradient(135deg, #2e2e4e, #6a1bb8);
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+      }
+
+      .chatbot-header h1 {
+        font-size: 26px;
+        margin-bottom: 6px;
+      }
+
+      .chat-messages {
+        height: 400px;
+        overflow-y: auto;
+        padding: 20px;
+        background: #fafafa;
+      }
+
+      .message {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      .message-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #fff;
+        margin-right: 10px;
+      }
+
+      .bot-message .message-avatar {
+        background: #2e2e4e;
+      }
+
+      .user-message .message-avatar {
+        background: #6a1bb8;
+        order: 2;
+        margin-left: 10px;
+        margin-right: 0;
+      }
+
+      .message-content {
+        background: #fff;
+        border-radius: 18px;
+        padding: 12px 15px;
+        max-width: 70%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .user-message .message-content {
+        background: #6a1bb8;
+        color: #fff;
+      }
+
+      .message-time {
+        font-size: 11px;
+        text-align: right;
+        opacity: 0.6;
+        margin-top: 5px;
+      }
+
+      .chat-input-container {
+        padding: 15px 20px;
+        border-top: 1px solid #eee;
+        background: #fff;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 10px;
+      }
+
+      .chat-input {
+        flex: 1;
+        padding: 12px 15px;
+        border-radius: 25px;
+        border: 2px solid #ddd;
+        font-size: 15px;
+        transition: 0.3s;
+      }
+
+      .chat-input:focus {
+        border-color: #6a1bb8;
+        outline: none;
+      }
+
+      .send-btn {
+        background: #2e2e4e;
+        color: #fff;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .send-btn:hover {
+        background: #6a1bb8;
+        transform: scale(1.05);
+      }
+
+      /* Footer */
+      footer {
+        background: #2e2e4e;
+        color: #d4dceb;
+        padding: 30px 0;
+        text-align: center;
+        margin-top: auto;
+      }
+
+      footer a {
+        color: #d4dceb;
+        transition: 0.3s;
+      }
+
+      footer a:hover {
+        color: #fff;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .main {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .search-container {
+          flex-direction: column;
+        }
+
+        .search-btn {
+          width: 100%;
+        }
+
+        .chat-messages {
+          height: 300px;
+        }
+
+        .chatbot-header h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo-container">
+          <div class="logo">TS</div>
+          <span class="logo-text">ThunderShop</span>
+        </div>
+
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Барааны нэр..."
+          />
+          <button class="search-btn">Хайх</button>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Нүүр</a>
+          <a href="categories.html" class="nav-link">Ангилал</a>
+          <a href="flash-sale.html" class="nav-link">Хямдрал</a>
+          <a href="Socialpay.html" class="nav-link">SocialPay</a>
+          <a href="login.html" class="nav-link">Нэвтрэх</a>
+          <div class="profile-icon" aria-label="Профайл">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              width="20"
+              height="20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0..."
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container main">
+      <aside class="sidebar">
+        <h3 class="sidebar-title">Ангилал</h3>
+        <ul class="sidebar-menu">
+          <li><a href="#" class="sidebar-link active">Бүх бараа</a></li>
+          <li><a href="#" class="sidebar-link">Абажур</a></li>
+          <li><a href="#" class="sidebar-link">Тавилга</a></li>
+          <li><a href="#" class="sidebar-link">Гар утас</a></li>
+          <li><a href="#" class="sidebar-link">Чихэвч</a></li>
+        </ul>
+      </aside>
+
+      <section class="chatbot-container">
+        <div class="chatbot-header">
+          <h1>Чатбот</h1>
+          <p>Бидэнтэй чатлаарай. Та асуух зүйлээ энд бичнэ үү.</p>
+        </div>
+
+        <div class="chat-messages">
+          <div class="message bot-message">
+            <div class="message-avatar">T</div>
+            <div class="message-content">
+              Сайн байна уу! Тавтай морил. Танд асуух зүйл байна уу?
+              <div class="message-time">10:00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-container">
+          <div class="input-group">
+            <input
+              type="text"
+              class="chat-input"
+              placeholder="Энд мессежээ бичнэ үү..."
+            />
+            <button class="send-btn" aria-label="Илгээх">&#9658;</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Footer хэсэг -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Бидний тухай</h3>
+            <ul class="footer-links">
+              <li><a href="about.html" class="footer-link">Бидний тухай</a></li>
+              <li>
+                <a href="contact.html" class="footer-link">Холбоо барих</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Тусламж</h3>
+            <ul class="footer-links">
+              <li><a href="help.html" class="footer-link">Тусламж</a></li>
+              <li>
+                <a href="faq.html" class="footer-link">Түгээмэл асуултууд</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Үйлчилгээ</h3>
+            <ul class="footer-links">
+              <li><a href="account.html" class="footer-link">Миний данс</a></li>
+              <li><a href="orders.html" class="footer-link">Захиалгууд</a></li>
+              <li>
+                <a href="wishlist.html" class="footer-link">Хүслийн жагсаалт</a>
+              </li>
+              <li><a href="coupons.html" class="footer-link">Купон</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Холбоо барих</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="tel:+97612345678" class="footer-link"
+                  >+976 1234 5678</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@thundershop.mn" class="footer-link"
+                  >info@thundershop.mn</a
+                >
+              </li>
+              <li>
+                <a href="location.html" class="footer-link">Улаанбаатар хот</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© ThunderShop 2025 - Бүх эрх хуулиар хамгаалагдсан</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

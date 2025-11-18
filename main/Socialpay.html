@@ -1,0 +1,79 @@
+<!-- tsogoo5 -->
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Pay - Олон хувааж төлөх</title>
+</head>
+
+<!-- Header -->
+<header style="background:#2e2e4e; padding:15px;">
+  <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
+   <!-- Лого ба нэр -->
+<div style="display:flex; align-items:center;">
+  <a href="index.html">
+    <img src="original-dbbc84c08bd6b4b49fc97827fa5be468.jpg" alt="Лого" width="80" height="50" style="margin-right:5px;">
+  </a>
+  <span style="font-family:Verdana, Arial; font-size:24px; color:#fff; font-weight:700;">
+    ThunderShop
+  </span>
+</div>
+
+
+    <nav>
+      <a href="index.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Нүүр</a>
+      <a href="Socialpay.html" style="color:#ffffff; text-decoration:none;">SocialPay</a>
+      <a href="Payment1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Payment</a>
+      <a href="login.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Login</a>
+      <a href="add-product.html" style="color:#ffffff; text-decoration:none;">Бараа нэмэх</a>
+      <a href="about-1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">About</a>
+    </nav>
+  </div>
+</header>
+
+<body>
+
+<main>
+    <h2>Social Pay төлбөр</h2>
+
+    <form action="#" method="post">
+        <label for="name">Овог, нэр:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="phone">Утасны дугаар:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="amount">Төлөх нийт хэмжээ (₮):</label><br>
+        <input type="number" id="amount" name="amount" required><br><br>
+
+        <label for="installments">Олон хувааж төлөх тоо (сар):</label><br>
+        <input type="number" id="installments" name="installments" min="1" value="1" required><br><br>
+
+        <label for="wallet">Wallet сонгох:</label><br>
+        <select id="wallet" name="wallet" required>
+            <option value="">Сонгоно уу</option>
+            <option value="wallet1">Wallet 1</option>
+            <option value="wallet2">Wallet 2</option>
+            <option value="wallet3">Wallet 3</option>
+        </select><br><br>
+
+        <label for="reference">Гүйлгээний утга:</label><br>
+        <input type="text" id="reference" name="reference"><br><br>
+
+        <input type="submit" value="Төлөх">
+    </form>
+
+    <p>Тайлбар: Нийт төлбөр таны сонгосон хуваалтын дагуу сар бүрийн төлбөрт хуваагдана.</p>
+</main>
+
+</body>
+<!-- Хөл хэсэг -->
+<footer style="background:#2e2e4e; padding:10px; margin-top:20px;">
+  <div style="text-align:center; color:#ffffff; font-family:Verdana, Arial; font-size:12px;">
+    © OnlineShop 2025 — 
+    <a href="contact.html" style="color:#ffffff; text-decoration:none;">Холбоо барих</a> |
+    <a href="FAQ.html" style="color:#ffffff; text-decoration:none;">FAQ</a> |
+    <a href="req.html" style="color:#ffffff; text-decoration:none;">Санал хүсэлт</a>
+  </div>
+</footer>
+</html>
