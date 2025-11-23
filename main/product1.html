@@ -1,93 +1,205 @@
-<!-- Bek1 -->
 <!DOCTYPE html>
 <html lang="mn">
-<head>
-  <meta charset="UTF-8">
-  <title>Бүтээгдэхүүн 1 - iPhone 16 Pro Max</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPhone 16 Pro Max — ThunderShop</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-<!-- Header -->
-<header style="background:#2e2e4e; padding:15px;">
-  <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
-   <!-- Лого ба нэр -->
-<div style="display:flex; align-items:center;">
-  <a href="index.html">
-    <img src="original-dbbc84c08bd6b4b49fc97827fa5be468.jpg" alt="Лого" width="80" height="50" style="margin-right:5px;">
-  </a>
-  <span style="font-family:Verdana, Arial; font-size:24px; color:#fff; font-weight:700;">
-    ThunderShop
-  </span>
-</div>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo-container">
+          <a href="index.html">
+            <div class="logo">TS</div>
+          </a>
+          <span class="logo-text">ThunderShop</span>
+        </div>
 
+        <!-- Хайлтын хэсэг -->
+        <div class="header-search">
+          <div class="search-container">
+            <input
+              type="text"
+              placeholder="Барааны нэр..."
+              class="search-input"
+            />
+            <button class="search-btn">Хайх</button>
+          </div>
+        </div>
 
-    <nav>
-      <a href="index.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Нүүр</a>
-      <a href="Socialpay.html" style="color:#ffffff; text-decoration:none;">SocialPay</a>
-      <a href="Payment1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Payment</a>
-      <a href="login.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Login</a>
-      <a href="add-product.html" style="color:#ffffff; text-decoration:none;">Бараа нэмэх</a>
-      <a href="about-1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">About</a>
-    </nav>
-  </div>
-</header>
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Нүүр</a>
+          <a href="categories.html" class="nav-link">Ангилал</a>
+          <a href="flash-sale.html" class="nav-link">Хямдрал</a>
+          <a href="Socialpay.html" class="nav-link">SocialPay</a>
+          <a href="login.html" class="nav-link">Нэвтрэх</a>
 
-<body bgcolor="#E9EEF5">
+          <!-- Profile Icon -->
+          <a href="profile.html" class="profile-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </nav>
 
-<center>
-  <table width="70%" bgcolor="#FFFFFF" cellpadding="25" border="1" bordercolor="#B0B0B0" style="border-radius:10px;">
-    <tr><td align="center">
-      <h2><font color="#2E3A59">iPhone 16 Pro Max</font></h2>
-      <img src="https://i.pinimg.com/1200x/b9/a4/dd/b9a4dd7c58f6a1c689708f4b7d8c9fc8.jpg" alt="iPhone 16 Pro Max" width="260"><br><br>
+        <!-- Mobile menu button -->
+        <div class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
 
-      <p><b>Үнэ:</b> <font color="#006400" size="4">6,200,000₮</font></p>
+    <div class="main-container container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h3 class="sidebar-title">Ангилал</h3>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="index.html" class="sidebar-link active">Бүх бараа</a>
+          </li>
+          <li><a href="electronics.html" class="sidebar-link">Абажур</a></li>
+          <li><a href="clothing.html" class="sidebar-link">Тавилга</a></li>
+          <li><a href="home.html" class="sidebar-link">Гар утас</a></li>
+          <li><a href="toys.html" class="sidebar-link">Чихэвч</a></li>
+          <li><a href="beauty.html" class="sidebar-link">Бэлгийн багц</a></li>
+          <li>
+            <a href="sports.html" class="sidebar-link">Цахилгаан хэрэгсэл</a>
+          </li>
+          <li>
+            <a href="accessories.html" class="sidebar-link"
+              >Гар утасны дагалдах хэрэгсэл</a
+            >
+          </li>
+        </ul>
+      </aside>
 
-      <hr width="80%" color="#C0C0C0">
+      <div class="card-container">
+        <div class="card">
+          <h2>iPhone 16 Pro Max</h2>
+          <img
+            src="https://i.pinimg.com/1200x/b9/a4/dd/b9a4dd7c58f6a1c689708f4b7d8c9fc8.jpg"
+            alt="iPhone 16 Pro Max"
+          />
+          <p class="price">₮6,200,000</p>
 
-      <h3 align="center"><font color="#2E3A59">Үндсэн мэдээлэл:</font></h3>
-      <ul align="center">
-        <li><b>Дэлгэц:</b> 6.9 инч Super Retina XDR OLED (120 Гц)</li>
-        <li><b>Процессор:</b> Apple A18 Pro чип</li>
-        <li><b>Камер:</b> 48 MP үндсэн, 48 MP ultra-wide, 12 MP телефото (5x zoom)</li>
-        <li><b>Санах ой:</b> 256GB / 512GB / 1TB</li>
-        <li><b>Батерей:</b> ~33 цагийн видео тоглуулах чадал</li>
-        <li><b>Оролт:</b> USB-C, WiFi 7, 5G</li>
-      </ul>
+          <form onsubmit="return orderSubmit()">
+            <!-- Өнгө сонгох -->
+            <ul class="option-list">
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Хар" />
+                  <span>Хар</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Цагаан" />
+                  <span>Цагаан</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Цэнхэр" />
+                  <span>Цэнхэр</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Desert Titanium" />
+                  <span>Desert Titanium</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="extra"
+                    value="Баталгаат үйлчилгээ"
+                  />
+                  <span>Баталгаат үйлчилгээ</span>
+                </label>
+              </li>
+            </ul>
 
-      <hr width="80%" color="#C0C0C0">
+            <label><b>Тоо ширхэг:</b></label
+            ><br />
+            <input type="number" min="1" value="1" /><br /><br />
 
-      <form>
-        <fieldset style="width:80%">
-          <legend><b>Өнгө сонгох</b></legend>
-          <input type="radio" name="color"> Хар
-          <input type="radio" name="color"> Цагаан
-          <input type="radio" name="color"> Цэнхэр
-          <input type="radio" name="color"> Desert Titanium
-        </fieldset>
-        <br>
+            <input type="submit" value="Захиалах" />
+          </form>
+        </div>
+      </div>
+    </div>
 
-        <label><b>Тоо ширхэг:</b></label>
-        <input type="number" min="1" value="1" style="width:60px"><br><br>
-
-        <input type="submit" value="Сагсанд нэмэх" 
-               style="background-color:#2E3A59; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">
-      </form>
-
-      <br>
-      <p align="left"><b>Тайлбар:</b> iPhone 16 Pro Max нь A18 Pro чиптэй, 48 MP камер, USB-C оролт, Wi-Fi 7, 
-      6.9 инчийн том OLED дэлгэцтэй, өндөр хүчин чадалтай дээд зэрэглэлийн ухаалаг гар утас юм.</p>
-
-    </td></tr>
-  </table>
-</center>
-
-</body>
-<!-- Хөл хэсэг -->
-<footer style="background:#2e2e4e; padding:10px; margin-top:20px;">
-  <div style="text-align:center; color:#ffffff; font-family:Verdana, Arial; font-size:12px;">
-    © OnlineShop 2025 — 
-    <a href="contact.html" style="color:#ffffff; text-decoration:none;">Холбоо барих</a> |
-    <a href="FAQ.html" style="color:#ffffff; text-decoration:none;">FAQ</a> |
-    <a href="req.html" style="color:#ffffff; text-decoration:none;">Санал хүсэлт</a>
-  </div>
-</footer>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Бидний тухай</h3>
+            <ul class="footer-links">
+              <li><a href="about.html" class="footer-link">Бидний тухай</a></li>
+              <li>
+                <a href="contact.html" class="footer-link">Холбоо барих</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Тусламж</h3>
+            <ul class="footer-links">
+              <li><a href="help.html" class="footer-link">Тусламж</a></li>
+              <li>
+                <a href="faq.html" class="footer-link">Түгээмэл асуултууд</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Үйлчилгээ</h3>
+            <ul class="footer-links">
+              <li><a href="account.html" class="footer-link">Миний данс</a></li>
+              <li><a href="orders.html" class="footer-link">Захиалгууд</a></li>
+              <li>
+                <a href="wishlist.html" class="footer-link">Хүслийн жагсаалт</a>
+              </li>
+              <li><a href="coupons.html" class="footer-link">Купон</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Холбоо барих</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="tel:+97612345678" class="footer-link"
+                  >+976 1234 5678</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@thundershop.mn" class="footer-link"
+                  >info@thundershop.mn</a
+                >
+              </li>
+              <li>
+                <a href="location.html" class="footer-link">Улаанбаатар хот</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© ThunderShop 2025 - Бүх эрх хуулиар хамгаалагдсан</p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

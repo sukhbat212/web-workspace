@@ -1,101 +1,483 @@
 <!-- tuvshuu4 -->
 <!DOCTYPE html>
 <html lang="mn">
-<head>
-  <meta charset="UTF-8">
-  <title>Төлбөрийн хэрэгсэл сонгох</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Төлбөрийн хэрэгсэл сонгох - ThunderShop</title>
+    <style>
+      /* Ерөнхий хэв маяг */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-<!-- Header -->
-<header style="background:#2e2e4e; padding:15px;">
-  <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
-   <!-- Лого ба нэр -->
-<div style="display:flex; align-items:center;">
-  <a href="index.html">
-    <img src="original-dbbc84c08bd6b4b49fc97827fa5be468.jpg" alt="Лого" width="80" height="50" style="margin-right:5px;">
-  </a>
-  <span style="font-family:Verdana, Arial; font-size:24px; color:#fff; font-weight:700;">
-    ThunderShop
-  </span>
-</div>
+      body {
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
+      /* Header хэсэг */
+      header {
+        background: #2e2e4e;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
 
-    <nav>
-      <a href="index.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Нүүр</a>
-      <a href="Socialpay.html" style="color:#ffffff; text-decoration:none;">SocialPay</a>
-      <a href="Payment1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Payment</a>
-      <a href="login.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Login</a>
-      <a href="add-product.html" style="color:#ffffff; text-decoration:none;">Бараа нэмэх</a>
-      <a href="about-1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">About</a>
-    </nav>
-  </div>
-</header>
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
 
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
 
-<body>
+      .logo {
+        width: 80px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 5px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #2e2e4e;
+      }
 
-  
-  <hr>
+      .site-name {
+        font-size: 24px;
+        color: #fff;
+        font-weight: 700;
+      }
 
-  <table border="1" cellpadding="10" cellspacing="0" width="70%" align="center">
-    <tr bgcolor="#f2f2f2">
-      <th>Зураг</th>
-      <th>Төрөл</th>
-      <th>Тайлбар</th>
-      <th>Үйлдэл</th>
-    </tr>
+      nav a {
+        color: #ffffff;
+        text-decoration: none;
+        margin-right: 20px;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
 
-    <tr>
-      <td align="center">
-        <a href="bank.html"><img src="bank.png" alt="bank" width="60"></a>
-      </td>
-      <td>Банкны апп</td>
-      <td>Банкны данс ашиглан шилжүүлэг хийх</td>
-      <td align="center"><a href="bank.html">Сонгох</a></td>
-    </tr>
+      nav a:hover {
+        color: #a3a3ff;
+      }
 
-    <tr>
-      <td align="center">
-        <a href="cart-connect.html"><img src="card.png" alt="card" width="60"></a>
-      </td>
-      <td>Карт холбох</td>
-      <td>Visa, MasterCard зэрэг карт холбох</td>
-      <td align="center"><a href="card.html">Сонгох</a></td>
-    </tr>
+      /* Гол контент хэсэг */
+      .main-container {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 0 20px;
+        flex: 1;
+      }
 
-    <tr>
-      <td align="center">
-        <a href="Qpay.html"><img src="qr.png" alt="qr" width="60"></a>
-      </td>
-      <td>QR кодоор төлөх</td>
-      <td>Банкны апп ашиглан QR код уншуулах</td>
-      <td align="center"><a href="qr.html">Сонгох</a></td>
-    </tr>
+      .page-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
 
-    <tr>
-      <td align="center">
-        <a href="cash.html"><img src="cod.png" alt="cash" width="60"></a>
-      </td>
-      <td>Хүргэлтийн үед төлөх</td>
-      <td>Бараа хүргэгдсэний дараа бэлнээр төлөх</td>
-      <td align="center"><a href="cod.html">Сонгох</a></td>
-    </tr>
+      .page-title {
+        color: #2e2e4e;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
 
-  </table>
+      .page-subtitle {
+        color: #666;
+        font-size: 18px;
+      }
 
-  <br>
-  <center>
-    <a href="index.html">← Буцах</a>
-  </center>
+      /* 2x2 төлбөрийн хэрэгслүүд */
+      .payment-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-bottom: 40px;
+      }
 
-</body>
-<!-- Хөл хэсэг -->
-<footer style="background:#2e2e4e; padding:10px; margin-top:20px;">
-  <div style="text-align:center; color:#ffffff; font-family:Verdana, Arial; font-size:12px;">
-    © OnlineShop 2025 — 
-    <a href="contact.html" style="color:#ffffff; text-decoration:none;">Холбоо барих</a> |
-    <a href="FAQ.html" style="color:#ffffff; text-decoration:none;">FAQ</a> |
-    <a href="req.html" style="color:#ffffff; text-decoration:none;">Санал хүсэлт</a>
-  </div>
-</footer>
+      .payment-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 30px 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        border: 2px solid transparent;
+      }
+
+      .payment-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-color: #2e2e4e;
+      }
+
+      .payment-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 32px;
+      }
+
+      .bank-icon {
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        color: #1976d2;
+      }
+
+      .card-icon {
+        background: linear-gradient(135deg, #fff3e0, #ffcc80);
+        color: #f57c00;
+      }
+
+      .qr-icon {
+        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        color: #388e3c;
+      }
+
+      .cod-icon {
+        background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+        color: #c2185b;
+      }
+
+      .payment-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2e2e4e;
+        margin-bottom: 12px;
+      }
+
+      .payment-description {
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #2e2e4e;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        margin-top: auto;
+      }
+
+      .btn:hover {
+        background: #3d3d6e;
+        transform: translateY(-2px);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 20px;
+        color: #2e2e4e;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        padding: 10px 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+      }
+
+      .back-link:hover {
+        color: #3d3d6e;
+        background: #f5f5f5;
+      }
+
+      .back-icon {
+        margin-right: 8px;
+      }
+
+      .order-summary {
+        background: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-top: 40px;
+      }
+
+      .order-summary h3 {
+        color: #2e2e4e;
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .summary-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .summary-item {
+        text-align: center;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .summary-label {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .summary-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2e2e4e;
+      }
+
+      .summary-total {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 2px solid #eaeaea;
+        margin-top: 15px;
+      }
+
+      .total-label {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .total-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2e2e4e;
+      }
+
+      /* Footer хэсэг */
+      footer {
+        background: #2e2e4e;
+        padding: 20px 0;
+        margin-top: 50px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        color: #ffffff;
+        font-size: 14px;
+      }
+
+      .footer-links {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #a3a3ff;
+      }
+
+      /* Хариуцлагатай дизайн */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        nav {
+          margin-top: 15px;
+        }
+
+        nav a {
+          display: inline-block;
+          margin: 5px 10px;
+        }
+
+        .payment-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .summary-items {
+          grid-template-columns: 1fr;
+        }
+
+        .payment-card {
+          padding: 25px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .payment-icon {
+          width: 70px;
+          height: 70px;
+          font-size: 28px;
+        }
+
+        .payment-title {
+          font-size: 20px;
+        }
+
+        .payment-description {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="logo-container">
+          <a href="index.html">
+            <div style="display: flex; align-items: center">
+              <a href="index.html"
+                ><img
+                  src="original-dbbc84c08bd6b4b49fc97827fa5be468.jpg"
+                  alt="Лого"
+                  width="80"
+                  height="50"
+              /></a>
+              <span>ThunderShop</span>
+            </div>
+          </a>
+          <span class="site-name">ThunderShop</span>
+        </div>
+        <nav>
+          <a href="index.html">Нүүр</a>
+          <a href="Socialpay.html">SocialPay</a>
+          <a href="Payment1.html">Төлбөр төлөх</a>
+          <a href="login.html">Нэвтрэх</a>
+          <a href="add-product.html">Бараа нэмэх</a>
+          <a href="about-1.html">Бидний тухай</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Гол контент -->
+    <div class="main-container">
+      <div class="page-header">
+        <h1 class="page-title">Төлбөрийн хэрэгсэл сонгох</h1>
+        <p class="page-subtitle">
+          Доорх төлбөрийн аргуудаас өөрт тохиромжтойгоо сонгоно уу
+        </p>
+      </div>
+
+      <!-- 2x2 төлбөрийн хэрэгслүүд -->
+      <div class="payment-grid">
+        <!-- Банкны апп - Зүүн дээд -->
+        <div class="payment-card">
+          <div class="payment-icon bank-icon">🏦</div>
+          <h3 class="payment-title">Банкны апп</h3>
+          <p class="payment-description">
+            Банкны апп ашиглан хурдан бөгөөд аюулгүй төлбөр төлөх
+          </p>
+          <a href="bank.html" class="btn">Сонгох</a>
+        </div>
+
+        <!-- Карт холбох - Баруун дээд -->
+        <div class="payment-card">
+          <div class="payment-icon card-icon">💳</div>
+          <h3 class="payment-title">Карт холбох</h3>
+          <p class="payment-description">
+            Visa, MasterCard зэрэг картаа холбож, хурдан төлбөр төлөх
+          </p>
+          <a href="cart-connect.html" class="btn">Сонгох</a>
+        </div>
+
+        <!-- QR кодоор төлөх - Зүүн доод -->
+        <div class="payment-card">
+          <div class="payment-icon qr-icon">📱</div>
+          <h3 class="payment-title">QR кодоор төлөх</h3>
+          <p class="payment-description">
+            Банкны апп ашиглан QR код уншуулах замаар төлбөр төлөх
+          </p>
+          <a href="Qpay.html" class="btn">Сонгох</a>
+        </div>
+
+        <!-- Хүргэлтийн үед төлөх - Баруун доод -->
+        <div class="payment-card">
+          <div class="payment-icon cod-icon">📦</div>
+          <h3 class="payment-title">Хүргэлтийн үед төлөх</h3>
+          <p class="payment-description">
+            Бараа хүргэгдсэний дараа бэлнээр төлбөрөө төлөх
+          </p>
+          <a href="cash.html" class="btn">Сонгох</a>
+        </div>
+      </div>
+
+      <div class="order-summary">
+        <h3>Захиалгын мэдээлэл</h3>
+        <div class="summary-items">
+          <div class="summary-item">
+            <div class="summary-label">Барааны тоо</div>
+            <div class="summary-value">3</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Барааны үнэ</div>
+            <div class="summary-value">₮ 245,000</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Хүргэлт</div>
+            <div class="summary-value">₮ 5,000</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Хямдрал</div>
+            <div class="summary-value">-₮ 15,000</div>
+          </div>
+        </div>
+        <div class="summary-total">
+          <div class="total-label">Нийт төлөх дүн</div>
+          <div class="total-value">₮ 235,000</div>
+        </div>
+      </div>
+
+      <center>
+        <a href="index.html" class="back-link">
+          <span class="back-icon">←</span>
+          Буцах
+        </a>
+      </center>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-links">
+          <a href="contact.html">Холбоо барих</a> |
+          <a href="FAQ.html">Түгээмэл асуултууд</a> |
+          <a href="req.html">Санал хүсэлт</a>
+        </div>
+        <div>© ThunderShop 2025 - Онлайн дэлгүүр</div>
+      </div>
+    </footer>
+  </body>
 </html>

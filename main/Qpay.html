@@ -1,52 +1,758 @@
-<!-- tuvshuu5 -->
 <!DOCTYPE html>
 <html lang="mn">
-<head>
-  <meta charset="UTF-8">
-  <title>QR кодоор төлөх</title>
-</head>
-<!-- Header -->
-<header style="background:#2e2e4e; padding:15px;">
-  <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
-   <!-- Лого ба нэр -->
-<div style="display:flex; align-items:center;">
-  <a href="index.html">
-    <img src="original-dbbc84c08bd6b4b49fc97827fa5be468.jpg" alt="Лого" width="80" height="50" style="margin-right:5px;">
-  </a>
-  <span style="font-family:Verdana, Arial; font-size:24px; color:#fff; font-weight:700;">
-    ThunderShop
-  </span>
-</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR кодоор төлөх - ThunderShop</title>
+    <style>
+      /* Ерөнхий хэв маяг */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
+      body {
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-    <nav>
-      <a href="index.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Нүүр</a>
-      <a href="Socialpay.html" style="color:#ffffff; text-decoration:none;">SocialPay</a>
-      <a href="Payment1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Payment</a>
-      <a href="login.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">Login</a>
-      <a href="add-product.html" style="color:#ffffff; text-decoration:none;">Бараа нэмэх</a>
-      <a href="about-1.html" style="color:#ffffff; text-decoration:none; margin-right:15px;">About</a>
-    </nav>
-  </div>
-</header>
-<body>
+      /* Header хэсэг */
+      header {
+        background: #2e2e4e;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
 
-  <h2>QR кодоор төлөх</h2>
-  <p>Банкны апп ашиглан доорх QR кодыг уншуулж төлбөрөө хийнэ үү.</p>
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
 
-  <img src="qrcode.png" alt="QR code" width="200"><br><br>
-  <img src="Rickrolling_QR_code.png" alt="qrcode" width="150">
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
 
-  <p><a href="payment.html">← Буцах</a></p>
+      .logo {
+        width: 80px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
 
-</body>
-<!-- Хөл хэсэг -->
-<footer style="background:#2e2e4e; padding:10px; margin-top:20px;">
-  <div style="text-align:center; color:#ffffff; font-family:Verdana, Arial; font-size:12px;">
-    © OnlineShop 2025 — 
-    <a href="contact.html" style="color:#ffffff; text-decoration:none;">Холбоо барих</a> |
-    <a href="FAQ.html" style="color:#ffffff; text-decoration:none;">FAQ</a> |
-    <a href="req.html" style="color:#ffffff; text-decoration:none;">Санал хүсэлт</a>
-  </div>
-</footer>
+      .site-name {
+        font-size: 24px;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      nav a {
+        color: #ffffff;
+        text-decoration: none;
+        margin-right: 20px;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #a3a3ff;
+      }
+
+      /* Гол контент хэсэг */
+      .main-container {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 0 20px;
+        flex: 1;
+        display: flex;
+        gap: 40px;
+      }
+
+      .qr-section {
+        flex: 1;
+        background: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .page-header {
+        margin-bottom: 25px;
+      }
+
+      .page-title {
+        color: #2e2e4e;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .page-subtitle {
+        color: #666;
+        font-size: 18px;
+      }
+
+      .qr-container {
+        margin: 30px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        display: inline-block;
+      }
+
+      .qr-code {
+        width: 220px;
+        height: 220px;
+        background: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .qr-code img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+
+      .amount-display {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2e2e4e;
+        margin: 20px 0;
+        padding: 15px;
+        background: #f0f2f5;
+        border-radius: 8px;
+        display: inline-block;
+      }
+
+      .payment-info {
+        margin: 25px 0;
+        text-align: left;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .info-label {
+        color: #666;
+        font-weight: 500;
+      }
+
+      .info-value {
+        color: #2e2e4e;
+        font-weight: 600;
+      }
+
+      .instructions {
+        margin: 30px 0;
+        text-align: left;
+      }
+
+      .instructions h3 {
+        color: #2e2e4e;
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .step-number {
+        width: 30px;
+        height: 30px;
+        background: #2e2e4e;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .step-text {
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-primary {
+        background: #2e2e4e;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #3d3d6e;
+      }
+
+      .btn-secondary {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .btn-secondary:hover {
+        background: #e0e0e0;
+      }
+
+      .btn-icon {
+        margin-right: 8px;
+      }
+
+      /* Мэдээлэл хэсэг */
+      .info-section {
+        flex: 1;
+      }
+
+      .supported-apps {
+        background: #fff;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 25px;
+      }
+
+      .supported-apps h3 {
+        color: #2e2e4e;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .app-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .app-item:hover {
+        background: #e9ecef;
+      }
+
+      .app-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: #e3f2fd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+
+      .app-name {
+        font-weight: 500;
+        color: #2e2e4e;
+      }
+
+      .security-info {
+        background: #fff;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .security-info h3 {
+        color: #2e2e4e;
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+
+      .security-features {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .security-feature {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .security-icon {
+        color: #4caf50;
+        font-size: 16px;
+      }
+
+      .security-text {
+        color: #555;
+        font-size: 14px;
+      }
+
+      .timer {
+        margin: 20px 0;
+        padding: 15px;
+        background: #fff8e6;
+        border-radius: 8px;
+        border-left: 4px solid #ffc107;
+      }
+
+      .timer-text {
+        color: #856404;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .timer-value {
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      /* Footer хэсэг */
+      footer {
+        background: #2e2e4e;
+        padding: 20px 0;
+        margin-top: 50px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        color: #ffffff;
+        font-size: 14px;
+        padding: 0 20px;
+      }
+
+      .footer-links {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #a3a3ff;
+      }
+
+      /* Хариуцлагатай дизайн */
+      @media (max-width: 768px) {
+        .main-container {
+          flex-direction: column;
+        }
+
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+          padding: 0 15px;
+        }
+
+        nav {
+          margin-top: 15px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+        }
+
+        nav a {
+          margin: 5px;
+          font-size: 14px;
+        }
+
+        .apps-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+        }
+
+        .qr-code {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .qr-code {
+          width: 180px;
+          height: 180px;
+        }
+
+        .amount-display {
+          font-size: 20px;
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="logo-container">
+          <div style="display: flex; align-items: center">
+            <a href="index.html"
+              ><img
+                src="original-dbbc84c08bd6b4b49fc97827fa5be468.jpg"
+                alt="Лого"
+                width="80"
+                height="50"
+            /></a>
+            <span
+              style="
+                font-size: 26px;
+                color: #fff;
+                font-weight: 700;
+                margin-left: 10px;
+              "
+              >ThunderShop</span
+            >
+          </div>
+        </div>
+        <nav>
+          <a href="index.html">Нүүр</a>
+          <a href="Socialpay.html">SocialPay</a>
+          <a href="Payment1.html">Төлбөр төлөх</a>
+          <a href="login.html">Нэвтрэх</a>
+          <a href="add-product.html">Бараа нэмэх</a>
+          <a href="about-1.html">Бидний тухай</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Гол контент -->
+    <div class="main-container">
+      <section class="qr-section">
+        <div class="page-header">
+          <h1 class="page-title">QR кодоор төлөх</h1>
+          <p class="page-subtitle">
+            Банкны апп ашиглан доорх QR кодыг уншуулж төлбөрөө хийнэ үү
+          </p>
+        </div>
+
+        <div class="timer">
+          <div class="timer-text">
+            <span>⏳ Хугацаа дуусах хугацаа:</span>
+            <span class="timer-value" id="countdown">14:59</span>
+          </div>
+        </div>
+
+        <div class="qr-container">
+          <div class="qr-code">
+            <!-- Бодит QR код зураг -->
+            <img
+              src="Rickrolling_QR_code.png"
+              alt="ThunderShop QR код"
+              width="60"
+              height="60"
+            />
+          </div>
+        </div>
+
+        <div class="amount-display">Нийт төлөх: ₮ 143,000</div>
+
+        <div class="payment-info">
+          <div class="info-item">
+            <span class="info-label">Захиалгын дугаар:</span>
+            <span class="info-value">TS20250315007</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Гаргасан огноо:</span>
+            <span class="info-value">2025-03-15 14:30</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Хүлээн авагч:</span>
+            <span class="info-value">ThunderShop LLC</span>
+          </div>
+        </div>
+
+        <div class="instructions">
+          <h3>Төлбөр төлөх заавар</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-text">
+                Банкны аппаа нээнэ үү (SocialPay, QPay, Хаан банк, Голомт банк
+                г.м)
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-text">
+                QR код уншуулах функцийг сонгоод дээрх QR кодыг уншуулна уу
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-text">
+                Төлбөрийн мэдээллийг шалгаад баталгаажуулна уу
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-text">
+                Төлбөр амжилттай болсны дараа баталгаажуулалтын мессеж ирнэ
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary" id="refresh-btn">
+            <span class="btn-icon">🔄</span>
+            QR код шинэчлэх
+          </button>
+          <a href="payment.html" class="btn btn-secondary">
+            <span class="btn-icon">←</span>
+            Буцах
+          </a>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <div class="supported-apps">
+          <h3>Дэмжигдэх банкны аппууд</h3>
+          <div class="apps-grid">
+            <div class="app-item">
+              <div class="app-icon">💙</div>
+              <span class="app-name">SocialPay</span>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">💛</div>
+              <span class="app-name">QPay</span>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">🔵</div>
+              <span class="app-name">Хаан банк</span>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">🟢</div>
+              <span class="app-name">Голомт банк</span>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">🟣</div>
+              <span class="app-name">ХХБ банк</span>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">🔴</div>
+              <span class="app-name">Төрийн банк</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="security-info">
+          <h3>Аюулгүй байдал</h3>
+          <div class="security-features">
+            <div class="security-feature">
+              <span class="security-icon">✓</span>
+              <span class="security-text">QR код нь 15 минутын хугацаатай</span>
+            </div>
+            <div class="security-feature">
+              <span class="security-icon">✓</span>
+              <span class="security-text"
+                >Мэдээллийг шифрлэлтээр хамгаалсан</span
+              >
+            </div>
+            <div class="security-feature">
+              <span class="security-icon">✓</span>
+              <span class="security-text"
+                >Зөвхөн ThunderShop-д төлөх зориулалттай</span
+              >
+            </div>
+            <div class="security-feature">
+              <span class="security-icon">✓</span>
+              <span class="security-text"
+                >Төлбөрийн баталгаажуулалт автоматаар хийгдэнэ</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer хэсэг -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Бидний тухай</h3>
+            <ul class="footer-links">
+              <li><a href="about.html" class="footer-link">Бидний тухай</a></li>
+              <li>
+                <a href="contact.html" class="footer-link">Холбоо барих</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Тусламж</h3>
+            <ul class="footer-links">
+              <li><a href="help.html" class="footer-link">Тусламж</a></li>
+              <li>
+                <a href="faq.html" class="footer-link">Түгээмэл асуултууд</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Үйлчилгээ</h3>
+            <ul class="footer-links">
+              <li><a href="account.html" class="footer-link">Миний данс</a></li>
+              <li><a href="orders.html" class="footer-link">Захиалгууд</a></li>
+              <li>
+                <a href="wishlist.html" class="footer-link">Хүслийн жагсаалт</a>
+              </li>
+              <li><a href="coupons.html" class="footer-link">Купон</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Холбоо барих</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="tel:+97612345678" class="footer-link"
+                  >+976 1234 5678</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@thundershop.mn" class="footer-link"
+                  >info@thundershop.mn</a
+                >
+              </li>
+              <li>
+                <a href="location.html" class="footer-link">Улаанбаатар хот</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© ThunderShop 2025 - Бүх эрх хуулиар хамгаалагдсан</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Хугацааны тоологч
+      let timeLeft = 15 * 60; // 15 минут секундээр
+      const countdownElement = document.getElementById("countdown");
+
+      function updateCountdown() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+
+        countdownElement.textContent = `${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+          countdownElement.textContent = "00:00";
+          alert("QR кодын хугацаа дууссан. Шинэ QR код үүсгэнэ үү.");
+        } else {
+          timeLeft--;
+        }
+      }
+
+      const countdownInterval = setInterval(updateCountdown, 1000);
+
+      // QR код шинэчлэх
+      document
+        .getElementById("refresh-btn")
+        .addEventListener("click", function () {
+          // Хэрэглэгчийг баталгаажуулах
+          const confirmRefresh = confirm(
+            "Та QR кодыг шинэчлэхдээ итгэлтэй байна уу?"
+          );
+
+          if (confirmRefresh) {
+            // Хугацааг дахин эхлүүлэх
+            timeLeft = 15 * 60;
+            updateCountdown();
+
+            // Анимаци үзүүлэх
+            this.innerHTML =
+              '<span class="btn-icon">⏳</span> Шинэчлэж байна...';
+            this.disabled = true;
+
+            setTimeout(() => {
+              this.innerHTML =
+                '<span class="btn-icon">🔄</span> QR код шинэчлэх';
+              this.disabled = false;
+              alert("QR код амжилттай шинэчлэгдлээ!");
+            }, 1500);
+          }
+        });
+
+      // Төлбөрийн статус шалгах (жишээ функц)
+      function checkPaymentStatus() {
+        // Энд бодит төлбөрийн статус шалгах API дуудах хэрэгтэй
+        console.log("Төлбөрийн статус шалгаж байна...");
+      }
+
+      // 30 секунд тутамд төлбөрийн статус шалгах
+      setInterval(checkPaymentStatus, 30000);
+    </script>
+  </body>
 </html>
