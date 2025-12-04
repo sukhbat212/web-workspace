@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPhone 16 Pro Max — ThunderShop</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo-container">
+          <a href="index.html">
+            <div class="logo">TS</div>
+          </a>
+          <span class="logo-text">ThunderShop</span>
+        </div>
+
+        <!-- Хайлтын хэсэг -->
+        <div class="header-search">
+          <div class="search-container">
+            <input
+              type="text"
+              placeholder="Барааны нэр..."
+              class="search-input"
+            />
+            <button class="search-btn">Хайх</button>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Нүүр</a>
+          <a href="categories.html" class="nav-link">Ангилал</a>
+          <a href="flash-sale.html" class="nav-link">Хямдрал</a>
+          <a href="Socialpay.html" class="nav-link">SocialPay</a>
+          <a href="login.html" class="nav-link">Нэвтрэх</a>
+
+          <!-- Profile Icon -->
+          <a href="profile.html" class="profile-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <div class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h3 class="sidebar-title">Ангилал</h3>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="index.html" class="sidebar-link active">Бүх бараа</a>
+          </li>
+          <li><a href="electronics.html" class="sidebar-link">Абажур</a></li>
+          <li><a href="clothing.html" class="sidebar-link">Тавилга</a></li>
+          <li><a href="home.html" class="sidebar-link">Гар утас</a></li>
+          <li><a href="toys.html" class="sidebar-link">Чихэвч</a></li>
+          <li><a href="beauty.html" class="sidebar-link">Бэлгийн багц</a></li>
+          <li>
+            <a href="sports.html" class="sidebar-link">Цахилгаан хэрэгсэл</a>
+          </li>
+          <li>
+            <a href="accessories.html" class="sidebar-link"
+              >Гар утасны дагалдах хэрэгсэл</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <div class="card-container">
+        <div class="card">
+          <h2>iPhone 16 Pro Max</h2>
+          <img
+            src="https://i.pinimg.com/1200x/b9/a4/dd/b9a4dd7c58f6a1c689708f4b7d8c9fc8.jpg"
+            alt="iPhone 16 Pro Max"
+          />
+          <p class="price">₮6,200,000</p>
+
+          <form onsubmit="return orderSubmit()">
+            <!-- Өнгө сонгох -->
+            <ul class="option-list">
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Хар" />
+                  <span>Хар</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Цагаан" />
+                  <span>Цагаан</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Цэнхэр" />
+                  <span>Цэнхэр</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="Desert Titanium" />
+                  <span>Desert Titanium</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="extra"
+                    value="Баталгаат үйлчилгээ"
+                  />
+                  <span>Баталгаат үйлчилгээ</span>
+                </label>
+              </li>
+            </ul>
+
+            <label><b>Тоо ширхэг:</b></label
+            ><br />
+            <input type="number" min="1" value="1" /><br /><br />
+
+            <input type="submit" value="Захиалах" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Бидний тухай</h3>
+            <ul class="footer-links">
+              <li><a href="about.html" class="footer-link">Бидний тухай</a></li>
+              <li>
+                <a href="contact.html" class="footer-link">Холбоо барих</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Тусламж</h3>
+            <ul class="footer-links">
+              <li><a href="help.html" class="footer-link">Тусламж</a></li>
+              <li>
+                <a href="faq.html" class="footer-link">Түгээмэл асуултууд</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Үйлчилгээ</h3>
+            <ul class="footer-links">
+              <li><a href="account.html" class="footer-link">Миний данс</a></li>
+              <li><a href="orders.html" class="footer-link">Захиалгууд</a></li>
+              <li>
+                <a href="wishlist.html" class="footer-link">Хүслийн жагсаалт</a>
+              </li>
+              <li><a href="coupons.html" class="footer-link">Купон</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Холбоо барих</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="tel:+97612345678" class="footer-link"
+                  >+976 1234 5678</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@thundershop.mn" class="footer-link"
+                  >info@thundershop.mn</a
+                >
+              </li>
+              <li>
+                <a href="location.html" class="footer-link">Улаанбаатар хот</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© ThunderShop 2025 - Бүх эрх хуулиар хамгаалагдсан</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

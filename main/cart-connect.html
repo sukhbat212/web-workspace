@@ -1,0 +1,247 @@
+<!-- tuvshuu2 -->
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Карт холбох - ThunderShop</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo-container">
+          <a href="index.html">
+            <div class="logo">TS</div>
+          </a>
+          <span class="logo-text">ThunderShop</span>
+        </div>
+
+        <!-- Хайлтын хэсэг header дотор дунд хэсэгт -->
+        <div class="header-search">
+          <div class="search-container">
+            <input
+              type="text"
+              placeholder="Барааны нэр..."
+              class="search-input"
+            />
+            <button class="search-btn">Хайх</button>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Нүүр</a>
+          <a href="categories.html" class="nav-link">Ангилал</a>
+          <a href="flash-sale.html" class="nav-link">Хямдрал</a>
+          <a href="Socialpay.html" class="nav-link">SocialPay</a>
+          <a href="login.html" class="nav-link">Нэвтрэх</a>
+
+          <!-- Profile Icon -->
+          <a href="profile.html" class="profile-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <div class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Гол контент -->
+    <div class="main-container">
+      <section class="card-section">
+        <h1>ThunderShop</h1>
+        <h2>Банкны карт холбох</h2>
+
+        <p class="intro-text">
+          Төлбөрийн явцыг хялбарчлахын тулд өөрийн банкны картыг ThunderShop
+          данстайгаа холбох боломжтой. Доорх маягтыг үнэн зөв бөглөнө үү.
+        </p>
+
+        <form id="card-form">
+          <fieldset>
+            <legend>Картын мэдээлэл</legend>
+
+            <div class="form-group">
+              <label for="bank">Банк сонгох:</label>
+              <select id="bank" name="bank" required>
+                <option value="">-- Банк сонго --</option>
+                <option>Хаан банк</option>
+                <option>Голомт банк</option>
+                <option>Худалдаа хөгжлийн банк</option>
+                <option>Төрийн банк</option>
+                <option>Ард капитал банк</option>
+                <option>Богд банк</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="cardname">Карт дээрх нэр:</label>
+              <input
+                type="text"
+                id="cardname"
+                name="cardname"
+                placeholder="Жишээ: BAT ERDENE"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cardnumber">Картын дугаар:</label>
+              <div class="card-number-input">
+                <input
+                  type="text"
+                  id="cardnumber"
+                  name="cardnumber"
+                  placeholder="1234 5678 9012 3456"
+                  maxlength="19"
+                  required
+                />
+                <span class="card-icon">💳</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expiry">Дуусах хугацаа:</label>
+                <input type="month" id="expiry" name="expiry" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cvv">CVV код:</label>
+                <input
+                  type="password"
+                  id="cvv"
+                  name="cvv"
+                  placeholder="123"
+                  maxlength="3"
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="btn">Карт холбох</button>
+          </fieldset>
+        </form>
+
+        <a href="index.html" class="back-link">← Буцах</a>
+      </section>
+
+      <section class="info-section">
+        <div class="warning-box">
+          <h3>Анхааруулга</h3>
+          <ul>
+            <li>Картын мэдээллээ зөв оруулсан эсэхээ сайтар шалгана уу.</li>
+            <li>
+              Таны карт амжилттай холбогдсоноор төлбөр хийхэд автоматаар
+              ашиглагдана.
+            </li>
+            <li>
+              ThunderShop таны картын мэдээллийг хадгалдаггүй, зөвхөн банкны
+              системээр баталгаажуулдаг.
+            </li>
+            <li>Хувийн мэдээллийг хуулахгүй байхыг анхаарна уу.</li>
+          </ul>
+        </div>
+
+        <div class="security-info">
+          <h3>Аюулгүй байдал</h3>
+          <p>Бид таны мэдээллийг дараах аргаар хамгаалдаг:</p>
+
+          <div class="security-features">
+            <div class="security-feature">
+              <span class="security-icon">🔒</span>
+              <span>SSL шифрлэлт</span>
+            </div>
+            <div class="security-feature">
+              <span class="security-icon">🛡️</span>
+              <span>PCI DSS стандарт</span>
+            </div>
+            <div class="security-feature">
+              <span class="security-icon">👁️</span>
+              <span>Мэдээллийг хадгалахгүй</span>
+            </div>
+            <div class="security-feature">
+              <span class="security-icon">🔍</span>
+              <span>Регуляр аудит</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer хэсэг -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Бидний тухай</h3>
+            <ul class="footer-links">
+              <li><a href="about.html" class="footer-link">Бидний тухай</a></li>
+              <li>
+                <a href="contact.html" class="footer-link">Холбоо барих</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Тусламж</h3>
+            <ul class="footer-links">
+              <li><a href="help.html" class="footer-link">Тусламж</a></li>
+              <li>
+                <a href="faq.html" class="footer-link">Түгээмэл асуултууд</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Үйлчилгээ</h3>
+            <ul class="footer-links">
+              <li><a href="account.html" class="footer-link">Миний данс</a></li>
+              <li><a href="orders.html" class="footer-link">Захиалгууд</a></li>
+              <li>
+                <a href="wishlist.html" class="footer-link">Хүслийн жагсаалт</a>
+              </li>
+              <li><a href="coupons.html" class="footer-link">Купон</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Холбоо барих</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="tel:+97612345678" class="footer-link"
+                  >+976 1234 5678</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@thundershop.mn" class="footer-link"
+                  >info@thundershop.mn</a
+                >
+              </li>
+              <li>
+                <a href="location.html" class="footer-link">Улаанбаатар хот</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© ThunderShop 2025 - Бүх эрх хуулиар хамгаалагдсан</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

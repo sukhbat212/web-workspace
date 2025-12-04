@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThunderShop - Онлайн дэлгүүр</title>
+    <style>
+      /* Ерөнхий стийл */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Header */
+      .header {
+        background: #2e2e4e;
+        padding: 10px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header .container {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .logo {
+        width: 80px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 5px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #2e2e2e;
+      }
+
+      .logo-text {
+        font-family: Verdana, Arial;
+        font-size: 24px;
+        color: #fff;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      /* Header доторх хайлтын хэсэг - дунд хэсэгт */
+      .header-search {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .search-container {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        gap: 10px;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 12px 20px;
+        border: 2px solid #fff;
+        border-radius: 20px;
+        font-size: 16px;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .search-input:focus {
+        border-color: #6a1bb8;
+        box-shadow: 0 0 0 3px rgba(138, 43, 232, 0.1);
+      }
+
+      .search-btn {
+        background: #fff;
+        color: #2e2e4e;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .search-btn:hover {
+        background: #6a1bb8;
+        color: #fff;
+      }
+
+      .nav {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .nav-link {
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Profile Icon */
+      .profile-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #2e2e4e;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 10px;
+      }
+
+      .profile-icon:hover {
+        background-color: #6a1bb8;
+        color: #fff;
+        transform: scale(1.05);
+      }
+
+      .profile-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        width: 30px;
+        height: 24px;
+        justify-content: space-between;
+      }
+
+      .mobile-menu-btn span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 2px;
+      }
+
+      /* Main container */
+      .main-container {
+        display: flex;
+        min-height: calc(100vh - 140px);
+        margin-top: 20px;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 200px;
+        background: #fff;
+        padding: 15px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        margin-right: 20px;
+      }
+
+      .sidebar-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #2e2e2e;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .sidebar-menu {
+        list-style: none;
+      }
+
+      .sidebar-menu li {
+        margin-bottom: 10px;
+      }
+
+      .sidebar-link {
+        display: block;
+        padding: 10px 15px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        color: #555;
+      }
+
+      .sidebar-link:hover,
+      .sidebar-link.active {
+        background-color: #f5f0ff;
+        color: #2e2e4e;
+        font-weight: 500;
+      }
+
+      /* Main content */
+      .main-content {
+        flex: 1;
+      }
+
+      /* Banner */
+      .banner {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 50px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .banner-content {
+        display: flex;
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .banner-main {
+        flex: 2;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 420px;
+      }
+
+      .banner-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .banner-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to right,
+          rgba(46, 46, 46, 0.8) 0%,
+          rgba(46, 46, 46, 0.4) 50%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 40px;
+        color: white;
+      }
+
+      .banner-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .banner-subtitle {
+        font-size: 18px;
+        margin-bottom: 20px;
+        max-width: 60%;
+      }
+
+      .banner-btn {
+        display: inline-block;
+        background: #2e2e4e;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 4px;
+        font-weight: bold;
+        width: fit-content;
+        transition: all 0.3s;
+      }
+
+      .banner-btn:hover {
+        background: #6a1bb8;
+        transform: translateY(-2px);
+      }
+
+      .banner-side {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .banner-side-item {
+        flex: 1;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        height: calc(50% - 10px);
+      }
+
+      .banner-side-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .side-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(46, 46, 46, 0.8), transparent);
+        padding: 15px;
+        color: white;
+      }
+
+      .side-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .side-subtitle {
+        font-size: 14px;
+      }
+
+      /* Хариуцлагатай дизайн */
+      @media (max-width: 768px) {
+        .banner-content {
+          flex-direction: column;
+        }
+
+        .banner-main {
+          height: 300px;
+        }
+
+        .banner-side {
+          flex-direction: row;
+        }
+
+        .banner-side-item {
+          height: 150px;
+        }
+
+        .banner-title {
+          font-size: 24px;
+        }
+
+        .banner-subtitle {
+          font-size: 16px;
+          max-width: 80%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .banner {
+          padding: 15px;
+        }
+
+        .banner-main {
+          height: 250px;
+        }
+
+        .banner-text {
+          padding: 0 20px;
+        }
+
+        .banner-title {
+          font-size: 20px;
+        }
+
+        .banner-subtitle {
+          font-size: 14px;
+          max-width: 90%;
+        }
+
+        .banner-btn {
+          padding: 10px 20px;
+        }
+
+        .banner-side {
+          flex-direction: column;
+        }
+
+        .banner-side-item {
+          height: 120px;
+        }
+      }
+
+      /* Flash sale section */
+      .flash-sale {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .flash-sale-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .flash-sale-title {
+        font-size: 20px;
+        color: #2e2e2e;
+        font-weight: bold;
+      }
+
+      .flash-sale-products {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
+      }
+
+      /* Products grid */
+      .products-section {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        font-size: 20px;
+        color: #2e2e2e;
+        font-weight: bold;
+      }
+
+      .view-all {
+        color: #2e2e4e;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      .view-all:hover {
+        color: #6a1bb8;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
+      }
+
+      /* Product card */
+      .product-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #eee;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(138, 43, 232, 0.1);
+      }
+
+      .product-img-container {
+        position: relative;
+        height: 180px;
+        overflow: hidden;
+      }
+
+      .product-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .product-card:hover .product-img {
+        transform: scale(1.05);
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #2e2e4e;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 10px;
+        font-weight: bold;
+      }
+
+      .product-info {
+        padding: 10px;
+      }
+
+      .product-name {
+        font-size: 14px;
+        margin-bottom: 5px;
+        height: 40px;
+        overflow: hidden;
+        color: #333;
+      }
+
+      .product-price {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 5px;
+      }
+
+      .current-price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #2e2e4e;
+      }
+
+      .original-price {
+        font-size: 12px;
+        color: #999;
+        text-decoration: line-through;
+      }
+
+      .sales-count {
+        font-size: 12px;
+        color: #999;
+      }
+
+      /* Footer */
+      .footer {
+        background: #2e2e4e;
+        padding: 30px 0;
+        margin-top: 30px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+      }
+
+      .footer-section {
+        flex: 1;
+      }
+
+      .footer-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #fff;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-link {
+        color: #d4dceb;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-link:hover {
+        color: #fff;
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #d4dceb;
+        font-size: 14px;
+      }
+
+      /* Responsive design */
+      @media (max-width: 992px) {
+        .main-container {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: flex;
+        }
+
+        .flash-sale-products,
+        .products-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .banner-content {
+          flex-direction: column;
+        }
+
+        .banner-main {
+          height: 250px;
+        }
+
+        .banner-text {
+          padding: 0 20px;
+        }
+
+        .banner-title {
+          font-size: 24px;
+        }
+
+        .banner-subtitle {
+          font-size: 16px;
+          max-width: 80%;
+        }
+
+        .header .container {
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .flash-sale-products,
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .header .container {
+          flex-wrap: wrap;
+        }
+
+        .header-search {
+          order: 3;
+          width: 100%;
+          max-width: 100%;
+          margin-top: 10px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .flash-sale-products,
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .logo-text {
+          font-size: 20px;
+        }
+
+        .logo {
+          width: 60px;
+          height: 40px;
+        }
+
+        .banner-main {
+          height: 200px;
+        }
+
+        .banner-title {
+          font-size: 20px;
+        }
+
+        .banner-subtitle {
+          font-size: 14px;
+          max-width: 100%;
+        }
+
+        .search-container {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .search-btn {
+          width: 100%;
+        }
+      }
+
+      /* Banner 2 */
+      .banner2 {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 50px;
+        box-shadow: 0 2px 10px rgb(255, 255, 255);
+      }
+
+      .banner-content2 {
+        display: flex;
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .banner-main2 {
+        flex: 2;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 500px;
+      }
+
+      .banner-main2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .banner-text2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to right,
+          rgba(46, 46, 46, 0.8) 0%,
+          rgba(46, 46, 46, 0.4) 50%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 40px;
+        color: white;
+      }
+
+      .banner-title2 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .banner-subtitle2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        max-width: 60%;
+      }
+
+      .banner-btn2 {
+        display: inline-block;
+        background: #2e2e4e;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 4px;
+        font-weight: bold;
+        width: fit-content;
+        transition: all 0.3s;
+      }
+
+      .banner-btn2:hover {
+        background: #6a1bb8;
+        transform: translateY(-2px);
+      }
+
+      .banner-side2 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .banner-side-item2 {
+        flex: 1;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .banner-side-item2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .side-text2 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(46, 46, 46, 0.8), transparent);
+        padding: 15px;
+        color: white;
+      }
+
+      .side-title2 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .side-subtitle2 {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo-container">
+          <a href="index.html">
+            <div class="logo">TS</div>
+          </a>
+          <span class="logo-text">ThunderShop</span>
+        </div>
+
+        <!-- Хайлтын хэсэг header дотор дунд хэсэгт -->
+        <div class="header-search">
+          <div class="search-container">
+            <input
+              type="text"
+              placeholder="Барааны нэр..."
+              class="search-input"
+            />
+            <button class="search-btn">Хайх</button>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Нүүр</a>
+          <a href="categories.html" class="nav-link">Ангилал</a>
+          <a href="Socialpay.html" class="nav-link">Хэтэвч</a>
+          <a href="login.html" class="nav-link">Нэвтрэх</a>
+
+          <!-- Profile Icon -->
+          <a href="profile.html" class="profile-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <div class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h3 class="sidebar-title">Ангилал</h3>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="index.html" class="sidebar-link active">Бүх бараа</a>
+          </li>
+          <li><a href="Electronics.html" class="sidebar-link">Гэр Ахуй</a></li>
+          <li><a href="clothing.html" class="sidebar-link">Тавилга</a></li>
+          <li><a href="home.html" class="sidebar-link">Гар утас</a></li>
+          <li><a href="toys.html" class="sidebar-link">Чихэвч</a></li>
+          <li><a href="beauty.html" class="sidebar-link">Бэлгийн багц</a></li>
+          <li>
+            <a href="sports.html" class="sidebar-link">Цахилгаан хэрэгсэл</a>
+          </li>
+          <li>
+            <a href="toys.html" class="sidebar-link"
+              >Гар утасны дагалдах хэрэгсэл</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Үндсэн контент хэсэг -->
+      <main class="main-content">
+        <!-- Баннер хэсэг -->
+        <section class="banner">
+          <div class="banner-content">
+            <div class="banner-main">
+              <img src="Banner4.jpg" alt="ThunderShop Banner" />
+              <div class="banner-text">
+                <h1 class="banner-title">ThunderShop-д тавтай морил</h1>
+                <p class="banner-subtitle">
+                  Хамгийн шилдэг бараанууд, хамгийн хямд үнээр. Хүргэлт үнэгүй,
+                  буцаалт 30 хоног!
+                </p>
+                <a href="products.html" class="banner-btn"
+                  >Одоо худалдаж авах</a
+                >
+              </div>
+            </div>
+            <div class="banner-side">
+              <div class="banner-side-item">
+                <img src="Banner2.jpg" alt="Promotion 1" />
+                <div class="side-text">
+                  <h3 class="side-title">Зуны хямдрал</h3>
+                  <p class="side-subtitle">50% хүртэл хямдрал</p>
+                </div>
+              </div>
+              <div class="banner-side-item">
+                <img src="Banner3.jpg" alt="Promotion 2" />
+                <div class="side-text">
+                  <h3 class="side-title">Шинэ ирсэн бараа</h3>
+                  <p class="side-subtitle">Шинэчлэгдсэн бараанууд</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Хямдралын хэсэг -->
+        <section class="flash-sale">
+          <div class="flash-sale-header">
+            <h2 class="flash-sale-title">Хямдралтай бараанууд</h2>
+          </div>
+          <div class="flash-sale-products">
+            <!-- Хямдралтай бараанууд -->
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://i.pinimg.com/736x/f3/17/94/f31794f2a6bc4a7305528502bfcb9a9c.jpg"
+                  alt="AirPods3"
+                  class="product-img"
+                />
+                <div class="product-badge">-30%</div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">AirPods 3rd Generation</h3>
+                <div class="product-price">
+                  <span class="current-price">945,000₮</span>
+                  <span class="original-price">1,350,000₮</span>
+                </div>
+                <div class="sales-count">89+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://i.pinimg.com/736x/bb/d7/11/bbd711927e49121b0f16e86749f046d4.jpg"
+                  alt="Угаалгын машин"
+                  class="product-img"
+                />
+                <div class="product-badge">-25%</div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Угаалгын машин 8кг</h3>
+                <div class="product-price">
+                  <span class="current-price">1,500,000₮</span>
+                  <span class="original-price">2,000,000₮</span>
+                </div>
+                <div class="sales-count">67+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://woodcapitol.com/wp-content/uploads/2023/01/Wooden-Bar-Table-Singapore.jpeg"
+                  alt="Модон ширээ"
+                  class="product-img"
+                />
+                <div class="product-badge">-20%</div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Модон ширээ 120x60см</h3>
+                <div class="product-price">
+                  <span class="current-price">580,000₮</span>
+                  <span class="original-price">725,000₮</span>
+                </div>
+                <div class="sales-count">42+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://macstore.mn/storage/products/thumbnail/ImMORctxYBEHQO0K0kQnKFA3liCQHkiqDlqpng8u.png"
+                  alt="Төрсөн өдрийн бэлгийн багц"
+                  class="product-img"
+                />
+                <div class="product-badge">-15%</div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">
+                  Macbook Air 15" M4 | 16GB RAM 256GB SSD
+                </h3>
+                <div class="product-price">
+                  <span class="current-price">5,165,000₮</span>
+                  <span class="original-price">4,895,000₮</span>
+                </div>
+                <div class="sales-count">23+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://images.samsung.com/is/image/samsung/p6pim/mn/sm-s918bzkhskz/gallery/mn-galaxy-s23-s918-sm-s918bzkhskz-535382512?$Q90_1164_776_PNG$"
+                  alt="Гар утас"
+                  class="product-img"
+                />
+                <div class="product-badge">-10%</div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Samsung Galaxy S23 Ultra</h3>
+                <div class="product-price">
+                  <span class="current-price">4,200,000₮</span>
+                  <span class="original-price">4,650,000₮</span>
+                </div>
+                <div class="sales-count">78+ зарагдсан</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Баннер хэсэг 2 -->
+
+        <section class="banner2">
+          <div class="banner-content2">
+            <div class="banner-main2">
+              <a href="product1.html" class="banner-link">
+                <img
+                  src="Banner5.jpg"
+                  alt="ThunderShop Banner"
+                  style="cursor: pointer"
+                />
+              </a>
+              <div class="banner-text2">
+                <h1 class="banner-title2">IPHONE16 BASE</h1>
+                <p class="banner-subtitle2">
+                  Өнгө: White, Black, Lavender, Blue, Sage
+                </p>
+                <a href="product1.html" class="banner-btn2"
+                  >Дэлгэрэнгүй мэдээлэл</a
+                >
+              </div>
+            </div>
+
+            <div class="banner-side2">
+              <div class="banner-side-item2">
+                <img src="Banner6.jpg" alt="Promotion 1" />
+                <div class="side-text2">
+                  <h3 class="side-title2">Зуны хямдрал</h3>
+                  <p class="side-subtitle2">50% хүртэл хямдрал</p>
+                </div>
+              </div>
+              <div class="banner-side-item2">
+                <img src="Banner7.jpg" alt="Promotion 2" />
+                <div class="side-text2">
+                  <h3 class="side-title2">Шинэ ирсэн бараа</h3>
+                  <p class="side-subtitle2">Шинэчлэгдсэн бараанууд</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Онцлох бараа хэсэг -->
+        <section class="products-section">
+          <div class="section-header">
+            <h2 class="section-title">Онцлох бараа</h2>
+            <a href="product1.html" class="view-all">Бүгдийг харах →</a>
+          </div>
+          <div class="products-grid">
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://i.pinimg.com/1200x/b9/a4/dd/b9a4dd7c58f6a1c689708f4b7d8c9fc8.jpg"
+                  alt="IPHONE16 Pro Max"
+                  class="product-img"
+                />
+                <div class="product-badge">ШИНЭ</div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">IPHONE16 Pro Max 256GB</h3>
+                <div class="product-price">
+                  <span class="current-price">5,600,000₮</span>
+                </div>
+                <div class="sales-count">150+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://bsg-i.nbxc.com/product/40/b5/82/5f055e5582ee91be5564e6a550.jpg@95Q.webp"
+                  alt="Спорт бараа"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Фитнес дасгалын багц</h3>
+                <div class="product-price">
+                  <span class="current-price">320,000₮</span>
+                </div>
+                <div class="sales-count">45+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://www.zjpkg.com/uploads/%E6%82%A6%E5%AD%97%E8%AF%80-%E5%85%B1%E8%93%9D%E8%89%B22.jpg"
+                  alt="Гоо сайхан"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Гоо сайханы багц</h3>
+                <div class="product-price">
+                  <span class="current-price">125,000₮</span>
+                </div>
+                <div class="sales-count">89+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://cdnus.globalso.com/goodlifegarment/380.jpg"
+                  alt="Хувцас"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Өвлийн хүрэм</h3>
+                <div class="product-price">
+                  <span class="current-price">85,000₮</span>
+                </div>
+                <div class="sales-count">120+ зарагдсан</div>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img-container">
+                <img
+                  src="https://book.mn/timthumb.php?src=https://book.mn/uploads/products/1686291381-93941452.jpg&w=400&h=500&zc=2&q=90&s=1"
+                  alt="Ном"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Монголын түүхэн ном</h3>
+                <div class="product-price">
+                  <span class="current-price">45,000₮</span>
+                </div>
+                <div class="sales-count">56+ зарагдсан</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer хэсэг -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Бидний тухай</h3>
+            <ul class="footer-links">
+              <li><a href="about.html" class="footer-link">Бидний тухай</a></li>
+              <li>
+                <a href="contact.html" class="footer-link">Холбоо барих</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Тусламж</h3>
+            <ul class="footer-links">
+              <li><a href="help.html" class="footer-link">Тусламж</a></li>
+              <li>
+                <a href="faq.html" class="footer-link">Түгээмэл асуултууд</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Үйлчилгээ</h3>
+            <ul class="footer-links">
+              <li><a href="account.html" class="footer-link">Миний данс</a></li>
+              <li><a href="orders.html" class="footer-link">Захиалгууд</a></li>
+              <li>
+                <a href="wishlist.html" class="footer-link">Хүслийн жагсаалт</a>
+              </li>
+              <li><a href="coupons.html" class="footer-link">Купон</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-title">Холбоо барих</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="tel:+97612345678" class="footer-link"
+                  >+976 1234 5678</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@thundershop.mn" class="footer-link"
+                  >info@thundershop.mn</a
+                >
+              </li>
+              <li>
+                <a href="location.html" class="footer-link">Улаанбаатар хот</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© ThunderShop 2025 - Бүх эрх хуулиар хамгаалагдсан</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
